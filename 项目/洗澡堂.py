@@ -7,7 +7,7 @@ while True:
 	print("2.离店")
 	print("3.统计")
 	print("4.退出")
-	num = int(input"请选择功能:")
+	num = int(input("请选择功能:"))
 	if num == 1:
 		print("入店")
 		md = {}
@@ -31,5 +31,29 @@ while True:
 			if md["name"]== name:
 				md["sj"] = False
 				endtime =int(time.time())
-				all_time = endtime
+				df_money = (endtime - md["time"])*10
+				print("花了%.02f"%df_money)
+				money = float(input("请付钱(注:不找零)"))
+				print("离店成功,欢迎下次欢迎:")
+			else:
+				print("未找到该用户")
+				break
+	elif num == 3:
+		print("统计")
+		acount = input("请输入管理员账号:")
+		pwd = input("请输入管理员密码:")
+		if acount == "123456" and pwd == "123456":
+			print("欢迎使用")
+			num = input("请选择功能")
+			count = 0
+			if num =="统计":
+				print("今天洗澡%d"%len(ls))
+				for md in ls:
+					if md["sj"]==False:
+						count +=1
+						print("今天离店%d"%count)
+						print("今天收益%0.2f"%all_money)
+	elif num ==4:
+		print("退出")
+		exit()
 
